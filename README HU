@@ -1,0 +1,126 @@
+Raspberry Pi alapú, helyi hálózaton működő rádió szolgáltatás – bemutatóvideó a dokumentum végén
+
+Helyi hálózaton működő rádió szolgáltatás **Raspberry Pi 4 Model B** segítségével.
+
+A projekt során egy Linux-alapú audio lejátszó környezetet alakítottam ki és konfiguráltam az **Icecast**, a **DarkIce** és egy virtuális audio loopback eszköz használatával. A hangforrást helyben tárolt, letöltött zenefájlok biztosították, így a Raspberry Pi rádió-streaming szerverként működött, amelyet a helyi hálózathoz (LAN) csatlakozó eszközökről lehetett elérni.
+
+## A projekt áttekintése
+
+A projekt célja egy működő rádió-streaming szolgáltatás létrehozása és konfigurálása volt egy Linux operációs rendszert futtató Raspberry Pi segítségével.
+
+A Raspberry Pi biztosította az Icecast streaming szervert, míg a DarkIce rögzítette és kódolta a bemeneti hangot, majd továbbította azt a szervernek. A virtuális audio loopback eszköz lehetővé tette a lejátszott hang továbbítását a streaming folyamat bemeneti oldalára.
+
+Az így létrehozott streamet a helyi hálózathoz csatlakozó más eszközök is elérhették.
+
+A projekt kizárólag helyi hálózaton működött, nem nyilvánosan elérhető internetes rádióállomásként.
+
+## Hardverelemek
+
+- Raspberry Pi 4 Model B
+- Monitor, amely micro-HDMI–HDMI csatlakozással kapcsolódott a Raspberry Pi-hez
+- Egy második monitor, amely egy különálló számítógéphez csatlakozott a bemutató során
+- Hangszóró, amely a Raspberry Pi 3,5 mm-es audio csatlakozójához kapcsolódott
+- Linux operációs rendszert tartalmazó microSD-kártya
+- Hálózati kapcsolat a helyi hálózaton történő kommunikációhoz
+
+## Szoftverek és technológiák
+
+| Technológia | Felhasználási terület |
+|---|---|
+| Linux | Operációs rendszer és a rádiószerver futtatási környezete |
+| Icecast | Streaming szerver, amely továbbítja a hangfolyamot a hallgatók felé |
+| DarkIce | Audio-bemenetet rögzítő és kódoló kliens, amely továbbítja a hangot az Icecast szervernek |
+| Audio loopback eszköz | Virtuális hangútvonal kialakítása a lejátszás és a hangrögzítés között |
+| Helyi zenefájlok | A rádióadás hangforrása |
+| LAN hálózat | Lehetővé teszi, hogy a helyi hálózathoz csatlakozó eszközök elérjék a streamet |
+
+### Icecast
+
+Az Icecast egy nyílt forráskódú streaming médiaszerver. Fogadja a forráskliens által továbbított hangfolyamot, majd elérhetővé teszi azt a csatlakozó hallgatók számára.
+
+Ebben a projektben az Icecast a Raspberry Pi-n futó központi rádiószerverként működött.
+
+### DarkIce
+
+A DarkIce egy élő audio-streaming alkalmazás, amely hangot rögzít egy audioeszközről vagy támogatott szoftveres hangforrásból, streaming formátumba kódolja, majd továbbítja a konfigurált Icecast szervernek.
+
+A projektben a DarkIce kapcsolta össze a hangbemeneti folyamatot az Icecast szerverrel.
+
+### Audio loopback eszköz
+
+A virtuális audio loopback eszköz egy belső hangútvonal kialakítását tette lehetővé.
+
+Segítségével a rendszeren lejátszott hang egy bemeneti hangforrásként is elérhetővé vált a streaming szoftver számára. Így nem volt szükség arra, hogy a hangot fizikai mikrofon segítségével rögzítsem.
+
+### Helyi hálózati kapcsolat (LAN)
+
+A szolgáltatást úgy konfiguráltam, hogy a helyi hálózaton belül legyen elérhető.
+
+A LAN-hoz csatlakozó más eszközök a Raspberry Pi helyi IP-címének és a konfigurált streaming portnak a használatával csatlakozhattak az Icecast szerverhez.
+
+## A hangstreaming működési folyamata
+
+A hang továbbításának általános folyamata:
+
+1. A zenefájlok helyben, a Raspberry Pi-n voltak tárolva.
+2. A hanglejátszó alkalmazás biztosította a hangforrást.
+3. A virtuális loopback eszköz a lejátszott hangot egy rögzítésre alkalmas bemenetre továbbította.
+4. A DarkIce rögzítette és kódolta a hangot.
+5. A DarkIce továbbította a kódolt hangfolyamot az Icecast szervernek.
+6. Az Icecast elérhetővé tette a streamet a helyi hálózathoz csatlakozó kliensek számára.
+
+## Hardveres összeállítás
+
+A Raspberry Pi egy monitorhoz HDMI-kimeneten keresztül csatlakozott, a külső hangszórót pedig a 3,5 mm-es audio csatlakozóján keresztül kötöttem hozzá.
+
+A bemutató során egy második, különálló számítógéphez csatlakoztatott monitort is használtam.
+
+Ez az összeállítás lehetővé tette, hogy a Raspberry Pi rendszere és a különálló számítógép egymástól függetlenül jelenjen meg, miközben bemutattam a rádió-streaming szolgáltatás működését.
+
+## Hálózati elérés
+
+A rádiószolgáltatást kizárólag helyi hálózati használatra terveztem.
+
+A helyi hálózathoz csatlakozó eszközök az alábbi formátumú címen érhették el az Icecast szervert:
+
+`http://<RASPBERRY_PI_HELYI_IP_CÍME>:8000`
+
+A pontos stream URL az Icecast konfigurációjában beállított mountpointtól függ.
+
+A szolgáltatás nem nyilvános internetes rádióállomásként működött.
+
+## Bemutatóvideó
+
+A Raspberry Pi hardveres összeállítását és a rádió-streaming projektet bemutató videó az alábbi linken érhető el:
+
+**   https://www.youtube.com/watch?v=9OWSV__QgpE  **
+
+A videó bemutatja a Raspberry Pi 4 Model B eszközt, a monitor és a hangszóró csatlakoztatását, valamint a projekthez használt fizikai összeállítást.
+
+## Megszerzett ismeretek és készségek
+
+A projekt során gyakorlati tapasztalatot szereztem többek között az alábbi területeken:
+
+- Linux rendszerkonfiguráció és rendszergazdai feladatok
+- Raspberry Pi hardveres beállítása
+- Audioeszközök és virtuális hangútvonalak kezelése
+- Hangrögzítés és hangkódolás
+- Icecast streaming szerver konfigurálása
+- DarkIce forráskliens konfigurálása
+- Helyi hálózaton működő hálózati szolgáltatások
+- Kliens–szerver kommunikáció működésének megértése
+- Szoftveres és hardveres komponensek integrációja és hibakeresése
+
+## A projekt háttere
+
+A projekt egy operációs rendszerekkel foglalkozó egyetemi modul keretében készült.
+
+A projekt a Raspberry Pi gyakorlati alkalmazását mutatja be egy könnyűsúlyú, Linux-alapú streaming szerver megvalósításán keresztül.
+
+## Megjegyzések
+
+- A streaming szolgáltatás kizárólag helyi hálózati elérésre készült.
+- A bemutató során helyben tárolt zenefájlokat használtam hangforrásként.
+- A repository nem tartalmaz zenefájlokat.
+- A hasonló rendszer újbóli megvalósításához csak megfelelő licenccel rendelkező vagy egyéb módon engedélyezett zenefájlokat szabad használni.
+- Jelszavakat vagy más hozzáférési adatokat tartalmazó konfigurációs fájlokat nem szabad nyilvánosságra hozni.
