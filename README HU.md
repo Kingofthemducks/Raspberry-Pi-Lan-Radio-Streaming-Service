@@ -14,6 +14,8 @@ Az így létrehozott streamet a helyi hálózathoz csatlakozó más eszközök i
 
 A projekt kizárólag helyi hálózaton működött, nem nyilvánosan elérhető internetes rádióállomásként.
 
+![Setup](./screenshots/Setup.png)
+
 ## Hardverelemek
 
 - Raspberry Pi 4 Model B
@@ -22,6 +24,8 @@ A projekt kizárólag helyi hálózaton működött, nem nyilvánosan elérhető
 - Hangszóró, amely a Raspberry Pi 3,5 mm-es audio csatlakozójához kapcsolódott
 - Linux operációs rendszert tartalmazó microSD-kártya
 - Hálózati kapcsolat a helyi hálózaton történő kommunikációhoz
+
+![Terminal](./screenshots/Terminal.png)
 
 ## Szoftverek és technológiák
 
@@ -40,11 +44,15 @@ Az Icecast egy nyílt forráskódú streaming médiaszerver. Fogadja a forráskl
 
 Ebben a projektben az Icecast a Raspberry Pi-n futó központi rádiószerverként működött.
 
+![Icecast](./screenshots/Icecast.png)
+
 ### DarkIce
 
 A DarkIce egy élő audio-streaming alkalmazás, amely hangot rögzít egy audioeszközről vagy támogatott szoftveres hangforrásból, streaming formátumba kódolja, majd továbbítja a konfigurált Icecast szervernek.
 
 A projektben a DarkIce kapcsolta össze a hangbemeneti folyamatot az Icecast szerverrel.
+
+![Darkice](./screenshots/DarkIce.png)
 
 ### Audio loopback eszköz
 
