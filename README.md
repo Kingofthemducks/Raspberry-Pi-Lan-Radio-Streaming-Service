@@ -14,6 +14,8 @@ The resulting stream was available to other devices connected to the same local 
 
 This was a **LAN-only project**, not a publicly accessible internet radio station.
 
+![Setup](./screenshots/Setup.png)
+
 ## Hardware
 
 - Raspberry Pi 4 Model B
@@ -22,6 +24,8 @@ This was a **LAN-only project**, not a publicly accessible internet radio statio
 - Speaker connected to the Raspberry Pi's 3.5 mm audio jack
 - microSD card containing the Linux operating system
 - Network connection for LAN communication
+
+![Terminal](./screenshots/Terminal.png)
 
 ## Software and Technologies
 
@@ -39,11 +43,15 @@ Icecast is an open-source streaming media server. It receives audio from a sourc
 
 In this project, Icecast acted as the central radio server hosted on the Raspberry Pi.
 
+![Icecast](./screenshots/Icecast.png)
+
 ### DarkIce
 
 DarkIce is a live audio streamer that captures audio from an audio interface or supported software audio source, encodes it into a streaming format, and sends it to a configured Icecast server.
 
 It connected the audio input pipeline to the Icecast server.
+
+![Darkice](./screenshots/DarkIce.png)
 
 ### Audio Loopback Device
 
